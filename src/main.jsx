@@ -1,9 +1,9 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import WorkoutGenerator from './WorkoutGenerator.jsx';
-import './styles.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./styles.css";
+import WorkoutGenerator from "./WorkoutGenerator_v45.12.jsx";
 
-createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <WorkoutGenerator />
   </React.StrictMode>
