@@ -2884,12 +2884,12 @@ export default function WorkoutGenerator() {
   };
 
   const SectionHeader = ({ icon: Icon, eyebrow, title, subtitle }) => (
-    <div className="mb-7 flex items-start gap-4">
+    <div className="mb-5 flex items-start gap-3 md:mb-7 md:gap-4">
       <IconBubble icon={Icon} tone="quiet" />
       <div>
         {eyebrow && <div className="mb-2 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-amber-100/55">{eyebrow}</div>}
-        <h2 className="text-2xl font-semibold tracking-[-0.035em] text-white md:text-[2rem]">{title}</h2>
-        {subtitle && <p className="mt-3 max-w-2xl text-sm leading-7 text-zinc-400 md:text-[0.95rem]">{subtitle}</p>}
+        <h2 className="text-xl font-semibold tracking-[-0.035em] text-white md:text-[2rem]">{title}</h2>
+        {subtitle && <p className="mt-2 max-w-2xl text-xs leading-5 text-zinc-400 md:mt-3 md:text-[0.95rem] md:leading-7">{subtitle}</p>}
       </div>
     </div>
   );
@@ -2899,23 +2899,27 @@ export default function WorkoutGenerator() {
       type="button"
       aria-pressed={isSelected}
       onClick={onClick}
-      className={`group relative w-full overflow-hidden rounded-[1.7rem] p-5 text-left transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-200 focus-visible:ring-offset-2 focus-visible:ring-offset-black md:p-6 ${
+      className={`group relative flex min-h-[142px] w-full overflow-hidden rounded-2xl p-3 text-left transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-200 focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:min-h-[150px] md:min-h-[178px] md:rounded-[1.7rem] md:p-6 ${
         isSelected
-          ? 'scale-[1.012] border border-amber-100/45 bg-amber-200/[0.085] shadow-[0_20px_80px_rgba(245,158,11,0.16),inset_0_1px_0_rgba(255,255,255,0.12)]'
+          ? 'scale-[1.01] border border-amber-100/45 bg-amber-200/[0.085] shadow-[0_16px_56px_rgba(245,158,11,0.14),inset_0_1px_0_rgba(255,255,255,0.12)] md:scale-[1.012] md:shadow-[0_20px_80px_rgba(245,158,11,0.16),inset_0_1px_0_rgba(255,255,255,0.12)]'
           : 'border border-white/[0.075] bg-white/[0.026] hover:-translate-y-1 hover:border-white/16 hover:bg-white/[0.048]'
       }`}
     >
       <span className={`absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(251,191,36,0.16),transparent_42%)] transition ${isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-70'}`} />
-      {isSelected && <span className="selected-glow absolute inset-px rounded-[1.65rem] border border-amber-100/18" />}
-      <span className="relative flex items-start gap-4">
-        <IconBubble icon={Icon} tone={isSelected ? 'orange' : 'quiet'} />
-        <span className="min-w-0 flex-1">
-          <span className="flex items-center gap-2 text-[1.05rem] font-semibold tracking-[-0.025em] text-white">
-            {title}
-            {isSelected && <CheckCircle2 className="h-4 w-4 shrink-0 text-orange-200" aria-hidden="true" />}
+      {isSelected && <span className="selected-glow absolute inset-px rounded-[1rem] border border-amber-100/18 md:rounded-[1.65rem]" />}
+      <span className="relative flex h-full w-full flex-col justify-between gap-3 md:gap-4">
+        <span className="flex items-start justify-between gap-2">
+          <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-to-br ring-1 backdrop-blur-xl md:h-11 md:w-11 md:rounded-2xl ${isSelected ? 'from-amber-200/20 to-orange-400/8 text-amber-100 ring-amber-200/18' : 'from-white/8 to-white/[0.02] text-zinc-300 ring-white/10'}`}>
+            <Icon className="h-4 w-4 md:h-5 md:w-5" />
           </span>
-          {subtitle && <span className="mt-2 block text-sm leading-6 text-zinc-400">{subtitle}</span>}
-          <span className="mt-4 block text-[0.65rem] font-medium uppercase tracking-[0.2em] text-zinc-500">{isSelected ? 'Selected' : 'Choose'}</span>
+          {isSelected && <CheckCircle2 className="h-4 w-4 shrink-0 text-orange-200 md:h-5 md:w-5" aria-hidden="true" />}
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="flex items-center gap-2 text-base font-semibold leading-tight tracking-[-0.025em] text-white md:text-[1.05rem]">
+            {title}
+          </span>
+          {subtitle && <span className="mt-1.5 block overflow-hidden text-xs leading-5 text-zinc-400 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] md:mt-2 md:text-sm md:leading-6">{subtitle}</span>}
+          <span className="mt-3 block text-[0.58rem] font-medium uppercase tracking-[0.18em] text-zinc-500 md:mt-4 md:text-[0.65rem] md:tracking-[0.2em]">{isSelected ? 'Selected' : 'Choose'}</span>
         </span>
       </span>
     </button>
@@ -2926,7 +2930,7 @@ export default function WorkoutGenerator() {
       type="button"
       aria-pressed={isSelected}
       onClick={onClick}
-      className={`rounded-full px-5 py-3 text-sm font-semibold transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-200 focus-visible:ring-offset-2 focus-visible:ring-offset-black ${
+      className={`w-full rounded-full px-3 py-3 text-xs font-semibold transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-200 focus-visible:ring-offset-2 focus-visible:ring-offset-black md:px-5 md:text-sm ${
         isSelected
           ? 'bg-amber-100 text-zinc-950 shadow-[0_14px_42px_rgba(245,158,11,0.16)]'
           : 'border border-white/[0.08] bg-white/[0.028] text-zinc-300 hover:-translate-y-0.5 hover:border-white/18 hover:bg-white/[0.06]'
@@ -3058,10 +3062,10 @@ export default function WorkoutGenerator() {
   );
 
   const Preferences = () => (
-    <div id="preferences" className="space-y-8 md:space-y-10">
-      <PremiumCard delay={60} variant="primary">
+    <div id="preferences" className="space-y-5 pb-6 md:space-y-10 md:pb-0">
+      <PremiumCard className="!p-4 sm:!p-5 md:!p-8" delay={60} variant="primary">
         <SectionHeader icon={Target} eyebrow="Step 01" title="Choose Your Training Goal" subtitle="Each goal keeps the same generation engine underneath, tuned for a different adaptation." />
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 md:gap-4 xl:grid-cols-4">
           {goalOptions.map(option => (
             <ChoiceCard key={option.value} {...option} isSelected={settings.goal === option.value} onClick={() => setSettings({ ...settings, goal: option.value })} />
           ))}
@@ -3069,18 +3073,18 @@ export default function WorkoutGenerator() {
       </PremiumCard>
 
       {settings.goal === 'v02-max' ? (
-        <PremiumCard delay={120} variant="primary">
+        <PremiumCard className="!p-4 sm:!p-5 md:!p-8" delay={120} variant="primary">
           <SectionHeader icon={Activity} eyebrow="Step 02" title="Conditioning Mode" subtitle="Choose steady aerobic development or high-intensity interval work." />
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid grid-cols-2 gap-3 md:gap-4">
             {conditioningOptions.map(option => (
               <ChoiceCard key={option.value} {...option} isSelected={settings.conditioningType === option.value} onClick={() => setSettings({ ...settings, conditioningType: option.value })} />
             ))}
           </div>
         </PremiumCard>
       ) : (
-        <PremiumCard delay={120} variant="primary">
+        <PremiumCard className="!p-4 sm:!p-5 md:!p-8" delay={120} variant="primary">
           <SectionHeader icon={User} eyebrow="Step 02" title="Experience Level" subtitle="Training age adjusts complexity, intensity, and advanced loading methods." />
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
             {experienceOptions.map(option => (
               <ChoiceCard key={option.value} {...option} isSelected={settings.experience === option.value} onClick={() => setSettings({ ...settings, experience: option.value })} />
             ))}
@@ -3090,18 +3094,18 @@ export default function WorkoutGenerator() {
 
       {settings.goal !== 'v02-max' && (
         <>
-          <PremiumCard delay={180} variant="primary">
+          <PremiumCard className="!p-4 sm:!p-5 md:!p-8" delay={180} variant="primary">
             <SectionHeader icon={Dumbbell} eyebrow="Step 03" title="Equipment Access" subtitle="Select the tools available today. The session stays inside those constraints." />
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            <div className="grid grid-cols-2 gap-3 md:gap-4 xl:grid-cols-4">
               {equipmentOptions.map(option => (
                 <ChoiceCard key={option.value} {...option} isSelected={settings.equipment === option.value} onClick={() => setSettings({ ...settings, equipment: option.value })} />
               ))}
             </div>
           </PremiumCard>
 
-          <PremiumCard delay={240} variant="secondary">
+          <PremiumCard className="!p-4 sm:!p-5 md:!p-6" delay={240} variant="secondary">
             <SectionHeader icon={Activity} eyebrow="Step 04" title="Session Focus" subtitle="Bias the workout toward a full-body stimulus or a specific regional emphasis." />
-            <div className="flex flex-wrap gap-3 md:gap-4">
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 xl:grid-cols-5">
               {focusOptions.map(option => (
                 <ChipButton key={option.value} isSelected={settings.focus === option.value} onClick={() => setSettings({ ...settings, focus: option.value })}>
                   {option.title}
@@ -3110,17 +3114,17 @@ export default function WorkoutGenerator() {
             </div>
           </PremiumCard>
 
-          <div className="grid gap-8 lg:grid-cols-[1fr_0.82fr]">
-            <PremiumCard delay={300} variant="primary">
+          <div className="grid gap-5 md:gap-8 lg:grid-cols-[1fr_0.82fr]">
+            <PremiumCard className="!p-4 sm:!p-5 md:!p-8" delay={300} variant="primary">
               <SectionHeader icon={Repeat} eyebrow="Step 05" title="Workout Style" subtitle="Choose dense paired supersets or a composed straight-set structure." />
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid grid-cols-2 gap-3 md:gap-4">
                 {styleOptions.map(option => (
                   <ChoiceCard key={option.value} {...option} isSelected={settings.workoutStyle === option.value} onClick={() => setSettings({ ...settings, workoutStyle: option.value })} />
                 ))}
               </div>
             </PremiumCard>
 
-            <PremiumCard delay={360} variant="secondary">
+            <PremiumCard className="!p-4 sm:!p-5 md:!p-6" delay={360} variant="secondary">
               <SectionHeader icon={Clock} eyebrow="Step 06" title="Time Available" subtitle="The generator scales density to fit your training window." />
               <div className="grid grid-cols-2 gap-3 md:gap-4">
                 {['20m', '30m', '45m', '60m'].map(duration => (
